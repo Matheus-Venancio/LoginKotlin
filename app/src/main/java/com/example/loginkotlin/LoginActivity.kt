@@ -34,13 +34,13 @@ class LoginActivity : AppCompatActivity() {
             object : BiometricPrompt.AuthenticationCallback() {
                 override fun onAuthenticationError(errorCode: Int, errString: CharSequence?) {
                     super.onAuthenticationError(errorCode, errString)
-                    notifyUser("Authetication erros: $errString")
+                    notifyUser("Erro na autenticação: $errString")
                 }
 
                 override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult?) {
                     super.onAuthenticationSucceeded(result)
-                    notifyUser("Authentication sucess")
-                    startActivity(Intent(this@LoginActivity, SecretActivity::class.java))
+                    notifyUser("Autenticado com sucesso")
+                    startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                 }
             }
 
@@ -54,14 +54,14 @@ class LoginActivity : AppCompatActivity() {
 
         btnBiometric.setOnClickListener(View.OnClickListener {
             val biometricPrompt = BiometricPrompt.Builder(this)
-                .setTitle("Title of prompt")
-                .setSubtitle("Authentication is required")
-                .setDescription("This app uses fingerprint protection")
+                .setTitle("Autenticação Login")
+                .setSubtitle("Autenticação necessaria")
+                .setDescription("Este aplicativo usa proteção de impressão digital")
                 .setNegativeButton(
-                    "Cancel",
+                    "Cancelar",
                     this.mainExecutor,
                     DialogInterface.OnClickListener { dialog, wich ->
-                        notifyUser("Authentication Cancelled")
+                        notifyUser("Autenticação Cancelada")
                     }).build()
 
             biometricPrompt.authenticate(
@@ -69,6 +69,12 @@ class LoginActivity : AppCompatActivity() {
                 mainExecutor,
                 authentactionCallback
             )
+        })
+
+        txtForgot.setOnClickListener(View.OnClickListener {
+            val intent = Intent(this@LoginActivity, SendSmsActivity::class.java)
+//            intent.putExtra("phoneUser"phone.toString)
+//            startActivity(intent)
         })
 
         txtCreateRegister.setOnClickListener(View.OnClickListener {
@@ -144,6 +150,10 @@ class LoginActivity : AppCompatActivity() {
 
     private fun notifyUser(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+    }
+
+    public fun permitionSms(){
+
     }
 }
 
