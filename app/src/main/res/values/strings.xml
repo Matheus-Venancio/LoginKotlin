@@ -4,4 +4,5 @@
     <string name="hintEmail">E-mail</string>
     <string name="hintPassword">Senha</string>
     <string name="hintPhone">Telefone</string>
+    <string name="btnLogin">Login</string>
 </resources>

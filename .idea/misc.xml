@@ -3,10 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/matheus/CursoKotlin/LoginKotlin/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/matheus/CursoKotlin/LoginKotlin/app/src/main/res/layout/activity_change_password.xml" value="0.2898550724637681" />
+        <entry key="..\:/Users/matheus/CursoKotlin/LoginKotlin/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Users/matheus/CursoKotlin/LoginKotlin/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/matheus/CursoKotlin/LoginKotlin/app/src/main/res/layout/activity_register.xml" value="0.33" />
         <entry key="..\:/Users/matheus/CursoKotlin/LoginKotlin/app/src/main/res/layout/activity_secret.xml" value="0.33" />
+        <entry key="..\:/Users/matheus/CursoKotlin/LoginKotlin/app/src/main/res/layout/activity_send_sms.xml" value="0.2767210144927536" />
       </map>
     </option>
   </component>

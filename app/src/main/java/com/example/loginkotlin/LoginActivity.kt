@@ -9,6 +9,7 @@ import android.hardware.biometrics.BiometricPrompt
 import android.os.Build
 import android.os.Bundle
 import android.os.CancellationSignal
+import android.telephony.SmsManager
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -20,6 +21,9 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_login.*
+import java.lang.StringBuilder
+import java.util.jar.Manifest
+import kotlin.random.Random
 
 
 class LoginActivity : AppCompatActivity() {
@@ -52,6 +56,7 @@ class LoginActivity : AppCompatActivity() {
 
         checkBiometricSupport()
 
+
         btnBiometric.setOnClickListener(View.OnClickListener {
             val biometricPrompt = BiometricPrompt.Builder(this)
                 .setTitle("Autenticação Login")
@@ -70,13 +75,6 @@ class LoginActivity : AppCompatActivity() {
                 authentactionCallback
             )
         })
-
-        txtForgot.setOnClickListener(View.OnClickListener {
-            val intent = Intent(this@LoginActivity, SendSmsActivity::class.java)
-//            intent.putExtra("phoneUser"phone.toString)
-//            startActivity(intent)
-        })
-
         txtCreateRegister.setOnClickListener(View.OnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
@@ -98,9 +96,16 @@ class LoginActivity : AppCompatActivity() {
                                 var passwordLogin = document.getString("password")
                                 if (passwordLogin.equals(edtPassword.text.toString())) {
                                     Toast.makeText(this, "Entrando", Toast.LENGTH_SHORT).show()
+                                    val intent = Intent(this, MainActivity::class.java)
+                                    startActivity(intent)
+                                }else{
+                                    Toast.makeText(
+                                        this,
+                                        "Senha incorreta",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
                                 }
-                                val intent = Intent(this, MainActivity::class.java)
-                                startActivity(intent)
+
                             }
                         } else {
                             Toast.makeText(
@@ -150,10 +155,6 @@ class LoginActivity : AppCompatActivity() {
 
     private fun notifyUser(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
-    }
-
-    public fun permitionSms(){
-
     }
 }
 
